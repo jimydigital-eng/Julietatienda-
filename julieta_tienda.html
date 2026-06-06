@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julieta Tienda — Tu mundo color rosa</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --pink-deep: #c9507a;
+    --pink-mid: #e07098;
+    --pink-light: #f5c4d1;
+    --pink-pale: #fdf0f4;
+    --rose: #d4537e;
+    --text-dark: #3a1a26;
+    --text-mid: #7a4060;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ---- HEADER ---- */
+  header {
+    background: var(--white);
+    border-bottom: 1px solid var(--pink-light);
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--pink-light);
+  }
+
+  .logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--pink-deep);
+    line-height: 1.2;
+  }
+
+  .logo-text span {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text-mid);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  nav a {
+    font-size: 13px;
+    color: var(--text-mid);
+    text-decoration: none;
+    margin-left: 28px;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--pink-deep); }
+
+  /* ---- HERO ---- */
+  .hero {
+    background: var(--pink-pale);
+    padding: 80px 40px 90px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: var(--pink-light);
+    opacity: 0.35;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: var(--pink-light);
+    opacity: 0.25;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: var(--pink-light);
+    color: var(--pink-deep);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 40px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 7vw, 72px);
+    font-weight: 900;
+    color: var(--pink-deep);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--rose);
+  }
+
+  .hero p {
+    font-size: 17px;
+    color: var(--text-mid);
+    max-width: 520px;
+    margin: 0 auto 36px;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--pink-deep);
+    color: var(--white);
+    padding: 14px 32px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-cta:hover { background: var(--rose); transform: translateY(-2px); }
+
+  /* ---- SECTION BASE ---- */
+  section { padding: 70px 40px; max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pink-mid);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .section-sub {
+    font-size: 16px;
+    color: var(--text-mid);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  /* ---- ABOUT ---- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .about-img-wrap {
+    position: relative;
+  }
+
+  .about-img-bg {
+    width: 100%;
+    aspect-ratio: 1;
+    background: var(--pink-light);
+    border-radius: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .about-logo {
+    width: 70%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .about-pill {
+    position: absolute;
+    bottom: 20px;
+    right: -16px;
+    background: var(--white);
+    border: 1px solid var(--pink-light);
+    border-radius: 50px;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--pink-deep);
+    box-shadow: 0 4px 16px rgba(201,80,122,0.12);
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .stat-card {
+    background: var(--pink-pale);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid var(--pink-light);
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--pink-deep);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-mid);
+  }
+
+  /* ---- PRODUCTS ---- */
+  .products-section {
+    background: var(--pink-pale);
+    padding: 70px 40px;
+  }
+
+  .products-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .product-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 28px 20px;
+    text-align: center;
+    border: 1px solid var(--pink-light);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(201,80,122,0.1); }
+
+  .product-icon {
+    font-size: 36px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+
+  .product-desc {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.6;
+  }
+
+  /* ---- WHOLESALE ---- */
+  .wholesale-banner {
+    background: var(--pink-deep);
+    border-radius: 24px;
+    padding: 48px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .wholesale-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .wholesale-text p {
+    font-size: 15px;
+    color: var(--pink-light);
+    max-width: 480px;
+    line-height: 1.6;
+  }
+
+  .wholesale-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--white);
+    color: var(--pink-deep);
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s, transform 0.15s;
+    flex-shrink: 0;
+  }
+  .wholesale-cta:hover { background: var(--pink-pale); transform: translateY(-2px); }
+
+  /* ---- CONTACT ---- */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+
+  .contact-card {
+    background: var(--pink-pale);
+    border: 1px solid var(--pink-light);
+    border-radius: 20px;
+    padding: 28px 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--pink-light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .contact-info h3 {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+
+  .contact-info p {
+    font-size: 15px;
+    color: var(--text-dark);
+    line-height: 1.5;
+  }
+
+  .contact-info a {
+    color: var(--pink-deep);
+    text-decoration: none;
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    background: var(--text-dark);
+    color: var(--pink-light);
+    text-align: center;
+    padding: 36px 40px;
+    font-size: 13px;
+  }
+
+  footer .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  footer p {
+    color: var(--pink-light);
+    opacity: 0.7;
+    margin-top: 8px;
+  }
+
+  @media (max-width: 720px) {
+    header { padding: 14px 20px; }
+    nav { display: none; }
+    .hero { padding: 60px 20px 70px; }
+    section { padding: 50px 20px; }
+    .about-grid { grid-template-columns: 1fr; gap: 36px; }
+    .about-pill { right: 0; }
+    .products-section { padding: 50px 20px; }
+    .wholesale-banner { padding: 32px 24px; }
+    footer { padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo-wrap">
+    <img class="logo-img" src="logo_julieta.jpg" alt="Logo Julieta Tienda">
+    <div class="logo-text">
+      Julieta Tienda
+      <span>Tu mundo color rosa</span>
+    </div>
+  </div>
+  <nav>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#productos">Productos</a>
+    <a href="#mayoristas">Mayoristas</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Medellín, Colombia · 7 años de experiencia</div>
+  <h1>Tu tienda de<br><em>accesorios</em> favorita</h1>
+  <p>Accesorios de tendencia para mujer, a precios especiales para mayoristas y detal. Empieza tu negocio hoy.</p>
+  <a href="#contacto" class="hero-cta">
+    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+    Contáctanos
+  </a>
+</div>
+
+<!-- SOBRE NOSOTROS -->
+<section id="nosotros">
+  <div class="about-grid">
+    <div class="about-img-wrap">
+      <div class="about-img-bg">
+        <img class="about-logo" src="logo_julieta.jpg" alt="Julieta Tienda logo">
+      </div>
+      <div class="about-pill">🎀 7 años de sueño</div>
+    </div>
+    <div>
+      <div class="section-label">Sobre nosotros</div>
+      <h2 class="section-title">Tu mundo<br>color rosa</h2>
+      <p class="section-sub">Somos una tienda mayorista y detal ubicada en el corazón de Medellín, especializada en accesorios de tendencia para mujer. Llevamos 7 años ayudando a emprendedoras a iniciar y hacer crecer su negocio.</p>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-number">7</div>
+          <div class="stat-label">Años de experiencia</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">28k+</div>
+          <div class="stat-label">Seguidores en Instagram</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">Mayor.</div>
+          <div class="stat-label">Precios especiales al por mayor</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Productos de tendencia</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<div class="products-section" id="productos">
+  <div class="products-inner">
+    <div class="section-label">Catálogo</div>
+    <h2 class="section-title">Nuestros productos</h2>
+    <p class="section-sub">Seleccionamos cada producto con cuidado para seguir las últimas tendencias. Todo lo que necesitas para tu negocio en un solo lugar.</p>
+    <div class="products-grid">
+      <div class="product-card">
+        <span class="product-icon">👜</span>
+        <div class="product-name">Bolsos y carteras</div>
+        <div class="product-desc">Diseños actuales y en tendencia para toda ocasión.</div>
+      </div>
+      <div class="product-card">
+        <span class="product-icon">💳</span>
+        <div class="product-name">Billeteras</div>
+        <div class="product-desc">Billeteras de moda en variedad de estilos y colores.</div>
+      </div>
+      <div class="product-card">
+        <span class="product-icon">✨</span>
+        <div class="product-name">Accesorios de moda</div>
+        <div class="product-desc">Todo tipo de accesorios femeninos en tendencia.</div>
+      </div>
+      <div class="product-card">
+        <span class="product-icon">🌸</span>
+        <div class="product-name">Artículos decorativos</div>
+        <div class="product-desc">Productos de decoración personal y del hogar.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAYORISTAS -->
+<section id="mayoristas">
+  <div class="wholesale-banner">
+    <div class="wholesale-text">
+      <h2>¿Eres revendedora o emprendedora?</h2>
+      <p>Tenemos precios especiales al por mayor para que puedas iniciar o hacer crecer tu negocio. Contáctanos y cotiza sin compromiso.</p>
+    </div>
+    <a href="https://wa.me/573147147646" class="wholesale-cta" target="_blank">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.121 1.534 5.85L0 24l6.335-1.663A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75a9.71 9.71 0 01-5.202-1.5l-.373-.222-3.867 1.015 1.031-3.765-.243-.386A9.718 9.718 0 012.25 12c0-5.376 4.374-9.75 9.75-9.75S21.75 6.624 21.75 12 17.376 21.75 12 21.75z"/></svg>
+      Escribir por WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="section-label">Encuéntranos</div>
+  <h2 class="section-title">Información de contacto</h2>
+  <p class="section-sub">Visítanos en la bodega o comunícate con nosotros por cualquiera de estos canales.</p>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="contact-icon">📍</div>
+      <div class="contact-info">
+        <h3>Dirección</h3>
+        <p>Cra 52 # 45-92, Bodega 405<br>Edificio Nuevo Guayaquil<br>Medellín, Antioquia, Colombia</p>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">📱</div>
+      <div class="contact-info">
+        <h3>Teléfono / WhatsApp</h3>
+        <p><a href="https://wa.me/573147147646">3147147646</a></p>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">📸</div>
+      <div class="contact-info">
+        <h3>Instagram</h3>
+        <p><a href="https://www.instagram.com/julietatiendaoficial_" target="_blank">@julietatiendaoficial_</a></p>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">🔗</div>
+      <div class="contact-info">
+        <h3>Links</h3>
+        <p><a href="https://fans.link/Julietatiendaoficial_" target="_blank">fans.link/Julietatiendaoficial_</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Julieta Tienda</div>
+  <p>Tu mundo color rosa · Medellín, Colombia</p>
+  <p>Cra 52 # 45-92 Bodega 405, Edificio Nuevo Guayaquil · 3147147646</p>
+</footer>
+
+</body>
+</html>
